@@ -5,6 +5,11 @@
   animation: fadeIn 1s;
 }
 
+.Scores {
+  margin-left: 2.5rem;
+  font-size: 1.3rem;
+}
+
 .game-screen {
   display: flex;
   justify-content: center;
@@ -53,5 +58,16 @@
   }
   to {
     opacity: 1;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .GameContainer {
+    flex-direction: column-reverse;
+    align-items: center;
+    margin-top: 4rem;
+  }
+  .Scores {
+    margin: 0 0 3rem 0;
   }
 }

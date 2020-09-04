@@ -6,12 +6,12 @@ export const Scores = (props) => {
 
   return (
     <div className="Scores">
-      <div className="level-container">
-        level:
+      <div>
+        <b>Level:</b>
         <div>{currLevel}</div>
       </div>
       <div>
-        high score:
+        <b>High Score:</b>
         <div>{highScore}</div>
       </div>
     </div>
