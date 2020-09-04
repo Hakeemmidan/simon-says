@@ -1,10 +1,14 @@
 import React from 'react';
+import { GameContainer } from './components/GameContainer';
 import './App.css';
 
 function App() {
   return (
     <div>
-      Hello world
+      <GameContainer/>
+      {/* GameContainer */}
+        {/* Toy */}
+        {/* Level */}
     </div>
   );
 }
