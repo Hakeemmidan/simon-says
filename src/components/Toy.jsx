@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 
 export const Toy = (props) => {
-  let canClick = false;
+  let forceStopAnimate = useRef(false);
   let targetColorIdx = useRef(0); // Increments on each correct click. Resets on new level.
   let gameColors = props.gameColors.current;
   const [YELLOW, BLUE, GREEN, RED] = ['Y', 'B', 'G', 'R'];
@@ -19,18 +19,22 @@ export const Toy = (props) => {
     var animateGameColors = async (i) => {
       if (gameColors[i]) {
         changeColor(gameColors[i]);
-        setTimeout(() => animateGameColors(i + 1), 2500);
+        setTimeout(() => animateGameColors(i + 1), 2000);
       }
 
-      await sleep(500);
+      await sleep(400);
+
+      if (forceStopAnimate.current) return;
       if (gameColors[i]) resetColor(gameColors[i]);
       if (gameColors[i - 1]) resetColor(gameColors[i - 1]);
     };
 
-    animateGameColors(0).then(() => canClick = true);
+    animateGameColors(0);
   };
 
   const changeColor = (color) => {
+    if (!document.getElementById(color)) return;
+
     switch (color) {
       case YELLOW:
         document.getElementById(YELLOW).style.fill = 'lightyellow';
@@ -54,19 +58,17 @@ export const Toy = (props) => {
   };
 
   const handleColorClick = (e) => {
-    if (canClick) {
-      if (e.target.id === gameColors[targetColorIdx.current]) {
-        if (levelCompleted()) {
-          // next level noise
-          props.incrementLevel();
-          targetColorIdx.current = 0;
-        } else {
-          // make correct choice noise
-          targetColorIdx.current++;
-        }
+    if (e.target.id === gameColors[targetColorIdx.current]) {
+      if (levelCompleted()) {
+        props.incrementLevel();
+        targetColorIdx.current = 0;
       } else {
-        props.setGameOver(true);
-      }
+        targetColorIdx.current++;
+      };
+    } else {
+      forceStopAnimate.current = true;
+      targetColorIdx.current = 0;
+      props.setGameOver(true);
     };
   };
 
