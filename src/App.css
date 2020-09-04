@@ -2,3 +2,34 @@
   text-align: center;
   margin-top: 11rem;
 }
+
+.start-game-screen {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+}
+
+.greetings-container {
+  text-align: center;
+  margin-top: 20%;
+}
+
+.start-button {
+  height: 4rem;
+  width: 14rem;
+  background-color: lightgreen;
+  color: white;
+  text-align: center;
+  vertical-align: center;
+  line-height: 3.5rem;
+  font-size: 3rem;
+  border-radius: 2rem;
+  color: green;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.start-button:hover {
+  background-color: blue;
+  color: lightgreen;
+}

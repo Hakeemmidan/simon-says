@@ -16,7 +16,16 @@ export const GameContainer = () => {
   };
 
   if (!gameIsStarted) {
-    // show screen asking user to start
+    return (
+      <div className="start-game-screen">
+        <div className="greetings-container">
+          <h1>Simon Says</h1>
+          <div className="start-button" onClick={() => setGameStarted(true)}>
+            Start!
+          </div>
+        </div>
+      </div>
+    );
   };
 
   if (gameIsOver) {
