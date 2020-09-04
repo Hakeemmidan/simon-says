@@ -1,13 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 
 export const Toy = (props) => {
+  let canClick = false;
+  let targetColorIdx = useRef(0); // Increments on each correct click. Resets on new level.
   let gameColors = props.gameColors.current;
   const [YELLOW, BLUE, GREEN, RED] = ['Y', 'B', 'G', 'R'];
 
   // animate toy whenever game colors change (i.e. when new level is achieved)
   useEffect(() => {
     animateToy();
-  }, [gameColors]);
+  });
 
   const sleep = (ms) => {
     return new Promise((resolve) => setTimeout(resolve, ms));
@@ -20,12 +22,12 @@ export const Toy = (props) => {
         setTimeout(() => animateGameColors(i + 1), 2500);
       }
 
-      await sleep(1000);
+      await sleep(500);
       if (gameColors[i]) resetColor(gameColors[i]);
       if (gameColors[i - 1]) resetColor(gameColors[i - 1]);
     };
 
-    animateGameColors(0);
+    animateGameColors(0).then(() => canClick = true);
   };
 
   const changeColor = (color) => {
@@ -50,6 +52,27 @@ export const Toy = (props) => {
   const resetColor = (color) => {
     document.getElementById(color).style.fill = null;
   };
+
+  const handleColorClick = (e) => {
+    if (canClick) {
+      if (e.target.id === gameColors[targetColorIdx.current]) {
+        if (levelCompleted()) {
+          // next level noise
+          props.incrementLevel();
+          targetColorIdx.current = 0;
+        } else {
+          // make correct choice noise
+          targetColorIdx.current++;
+        }
+      } else {
+        props.setGameOver(true);
+      }
+    };
+  };
+
+  const levelCompleted = () => {
+    return targetColorIdx.current === gameColors.length - 1;
+  }
 
   return (
     <svg width={201.333} height={201.332} {...props}>
@@ -93,6 +116,7 @@ export const Toy = (props) => {
         </clipPath>
         <path
           id="Y"
+          onClick={(e) => handleColorClick(e)}
           className="toy-btn"
           clipPath="url(#prefix__d)"
           fill="#DFC323"
@@ -100,6 +124,7 @@ export const Toy = (props) => {
         />
         <path
           id="B"
+          onClick={(e) => handleColorClick(e)}
           className="toy-btn"
           clipPath="url(#prefix__d)"
           fill="#283676"
@@ -107,6 +132,7 @@ export const Toy = (props) => {
         />
         <path
           id="G"
+          onClick={(e) => handleColorClick(e)}
           className="toy-btn"
           clipPath="url(#prefix__d)"
           fill="#00783E"
@@ -114,6 +140,7 @@ export const Toy = (props) => {
         />
         <path
           id="R"
+          onClick={(e) => handleColorClick(e)}
           className="toy-btn"
           clipPath="url(#prefix__d)"
           fill="#C92127"

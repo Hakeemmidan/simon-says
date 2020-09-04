@@ -6,11 +6,11 @@ export const GameContainer = () => {
   // state vars
   const [gameIsStarted, setGameStarted] = useState(false);
   const [gameIsOver, setGameOver] = useState(false);
-  
+  const [currLevel, setCurrLevel] = useState(1);
+  const [highScore, setHighScore] = useState(0);
+
   // ref vars
-  let gameColors = useRef(['G', 'R']); // game randomly generated colors
-  const currLevel = useRef(0);
-  const highScore = useRef(0);
+  let gameColors = useRef([]); // game's randomly generated colors
   
   // constants
   const COLORS_ARR = ['R', 'G', 'B', 'Y'];
@@ -20,7 +20,7 @@ export const GameContainer = () => {
     gameColors.current.push(
       COLORS_ARR[Math.floor(Math.random() * COLORS_ARR.length)]
     );
-    currLevel.current += 1;
+    setCurrLevel(currLevel + 1);
   };
   
   const startGame = () => {
@@ -49,9 +49,9 @@ export const GameContainer = () => {
 
   return (
     <div className="GameContainer">
-      <Toy gameColors={gameColors} />
-      <Scores currLevel={currLevel} highScore={highScore}/>
+      <Toy gameColors={gameColors} incrementLevel={incrementLevel} setGameOver={setGameOver} />
+      <Scores currLevel={currLevel} highScore={highScore} />
     </div>
-  )
+  );
 }
 
