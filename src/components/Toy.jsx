@@ -21,14 +21,13 @@ export const Toy = (props) => {
     var animateGameColors = async (i) => {
       if (gameColors[i]) {
         changeColor(gameColors[i]);
-        setTimeout(() => animateGameColors(i + 1), 2000);
+        setTimeout(() => animateGameColors(i + 1), 800);
       }
 
-      await sleep(400);
+      await sleep(500);
 
       if (forceStopAnimate.current) return;
       if (gameColors[i]) resetColor(gameColors[i]);
-      if (gameColors[i - 1]) resetColor(gameColors[i - 1]);
     };
 
     animateGameColors(0);
