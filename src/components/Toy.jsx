@@ -1,10 +1,47 @@
-import * as React from "react";
+import React, { useEffect } from "react";
 
-const SvgComponent = (props) => {
-  // from props, play the game colors so far in animated way on mount
+export const Toy = (props) => {
+  let gameColors = props.gameColors.current;
+  const [YELLOW, BLUE, GREEN, RED] = ['Y', 'B', 'G', 'R'];
 
-  // on each click of color, check if it matches
-    // keep counter idx
+  // animate toy whenever game colors change (i.e. when new level is achieved)
+  useEffect(() => {
+    animateToy();
+  }, [gameColors]);
+
+  const animateToy = () => {
+    var animateGameColors = (i) => {
+      if (gameColors[i]) {
+        changeColor(gameColors[i]);
+        setTimeout(() => animateGameColors(i + 1), 2500);
+      }
+    };
+
+    animateGameColors(0);
+  };
+
+  const changeColor = (color) => {
+    switch (color) {
+      case YELLOW:
+        document.getElementById(YELLOW).style.fill = 'lightyellow';
+        break;
+      case BLUE:
+        document.getElementById(BLUE).style.fill = 'lightblue';
+        break;
+      case GREEN:
+        document.getElementById(GREEN).style.fill = 'lightgreen';
+        break;
+      case RED:
+        document.getElementById(RED).style.fill = 'orange';
+        break;
+      default:
+        break;
+    };
+  };
+
+  const resetColor = (color) => {
+    document.getElementById(color).style.fill = null;
+  };
 
   return (
     <svg width={201.333} height={201.332} {...props}>
@@ -47,21 +84,29 @@ const SvgComponent = (props) => {
           <use xlinkHref="#prefix__c" overflow="visible" />
         </clipPath>
         <path
+          id="Y"
+          className="toy-btn"
           clipPath="url(#prefix__d)"
           fill="#DFC323"
           d="M3.246 100.666h97.419v92.676H3.246z"
         />
         <path
+          id="B"
+          className="toy-btn"
           clipPath="url(#prefix__d)"
           fill="#283676"
           d="M100.667 100.666h97.419v92.676h-97.419z"
         />
         <path
+          id="G"
+          className="toy-btn"
           clipPath="url(#prefix__d)"
           fill="#00783E"
           d="M100.667 7.99h97.419v92.676h-97.419z"
         />
         <path
+          id="R"
+          className="toy-btn"
           clipPath="url(#prefix__d)"
           fill="#C92127"
           d="M3.246 7.99h97.419v92.676H3.246z"
@@ -74,6 +119,3 @@ const SvgComponent = (props) => {
     </svg>
   );
 }
-
-export default SvgComponent;
-

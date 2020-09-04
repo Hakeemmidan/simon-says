@@ -1,6 +1,7 @@
 .GameContainer {
   text-align: center;
   margin-top: 11rem;
+  animation: fadeIn 1s;
 }
 
 .start-game-screen {
@@ -32,4 +33,17 @@
 .start-button:hover {
   background-color: blue;
   color: lightgreen;
+}
+
+.toy-btn {
+  cursor: pointer;
+}
+
+.toy-btn:hover {
+  opacity: 0.3;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
 }
