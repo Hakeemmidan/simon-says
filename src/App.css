@@ -1,5 +1,6 @@
 .GameContainer {
-  text-align: center;
+  display: flex;
+  justify-content: center;
   margin-top: 11rem;
   animation: fadeIn 1s;
 }
@@ -37,10 +38,6 @@
 
 .toy-btn {
   cursor: pointer;
-}
-
-.toy-btn:hover {
-  opacity: 0.3;
 }
 
 /* utilities START */

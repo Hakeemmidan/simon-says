@@ -6,7 +6,7 @@ export const GameContainer = () => {
   // state vars
   const [gameStarted, setGameStarted] = useState(false);
   const [gameOver, setGameOver] = useState(false);
-  const [currLevel, setCurrLevel] = useState(1);
+  const [currLevel, setCurrLevel] = useState(0);
   const [highScore, setHighScore] = useState(0);
 
   // ref vars
@@ -20,7 +20,13 @@ export const GameContainer = () => {
     gameColors.current.push(
       COLORS_ARR[Math.floor(Math.random() * COLORS_ARR.length)]
     );
-    setCurrLevel(currLevel + 1);
+    
+    if (gameOver) {
+      if (currLevel > highScore) setHighScore(currLevel);
+      setCurrLevel(1)
+    } else {
+      setCurrLevel(currLevel + 1);
+    }
   };
 
   const startGame = () => {
@@ -30,7 +36,6 @@ export const GameContainer = () => {
 
   const restartGame = () => {
     gameColors.current = [];
-    setCurrLevel(0);
     incrementLevel();
     setGameOver(false);
   };

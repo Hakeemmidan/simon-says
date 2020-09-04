@@ -16,6 +16,8 @@ export const Toy = (props) => {
   }
 
   const animateToy = async () => {
+    await sleep(400);
+
     var animateGameColors = async (i) => {
       if (gameColors[i]) {
         changeColor(gameColors[i]);

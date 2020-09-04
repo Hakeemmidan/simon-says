@@ -6,9 +6,6 @@ function App() {
   return (
     <div>
       <GameContainer/>
-      {/* GameContainer */}
-        {/* Toy */}
-        {/* Level */}
     </div>
   );
 }
