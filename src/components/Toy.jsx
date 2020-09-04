@@ -9,12 +9,20 @@ export const Toy = (props) => {
     animateToy();
   }, [gameColors]);
 
-  const animateToy = () => {
-    var animateGameColors = (i) => {
+  const sleep = (ms) => {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  const animateToy = async () => {
+    var animateGameColors = async (i) => {
       if (gameColors[i]) {
         changeColor(gameColors[i]);
         setTimeout(() => animateGameColors(i + 1), 2500);
       }
+
+      await sleep(1000);
+      if (gameColors[i]) resetColor(gameColors[i]);
+      if (gameColors[i - 1]) resetColor(gameColors[i - 1]);
     };
 
     animateGameColors(0);
