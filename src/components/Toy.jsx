@@ -6,7 +6,6 @@ export const Toy = (props) => {
   let gameColors = props.gameColors.current;
   const [YELLOW, BLUE, GREEN, RED] = ['Y', 'B', 'G', 'R'];
 
-  // animate toy whenever game colors change (i.e. when new level is achieved)
   useEffect(() => {
     animateToy();
   });
