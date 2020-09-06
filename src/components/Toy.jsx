@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, {useEffect, useRef} from 'react';
 
 export const Toy = (props) => {
   let forceStopAnimate = useRef(false);
@@ -12,7 +12,7 @@ export const Toy = (props) => {
 
   const sleep = (ms) => {
     return new Promise((resolve) => setTimeout(resolve, ms));
-  }
+  };
 
   const animateToy = async () => {
     await sleep(400);
@@ -50,7 +50,7 @@ export const Toy = (props) => {
         break;
       default:
         break;
-    };
+    }
   };
 
   const resetColor = (color) => {
@@ -64,17 +64,17 @@ export const Toy = (props) => {
         targetColorIdx.current = 0;
       } else {
         targetColorIdx.current++;
-      };
+      }
     } else {
       forceStopAnimate.current = true;
       targetColorIdx.current = 0;
       props.setGameOver(true);
-    };
+    }
   };
 
   const levelCompleted = () => {
     return targetColorIdx.current === gameColors.length - 1;
-  }
+  };
 
   return (
     <svg width={201.333} height={201.332} {...props}>
@@ -155,4 +155,4 @@ export const Toy = (props) => {
       <circle fill="#4C4C4D" cx={100.666} cy={100.666} r={28.07} />
     </svg>
   );
-}
+};

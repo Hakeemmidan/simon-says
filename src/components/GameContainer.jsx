@@ -1,6 +1,6 @@
-import React, { useState, useRef } from 'react';
-import { Scores } from './Scores';
-import { Toy } from './Toy';
+import React, {useState, useRef} from 'react';
+import {Scores} from './Scores';
+import {Toy} from './Toy';
 
 export const GameContainer = () => {
   // state vars
@@ -20,10 +20,10 @@ export const GameContainer = () => {
     gameColors.current.push(
       COLORS_ARR[Math.floor(Math.random() * COLORS_ARR.length)]
     );
-    
+
     if (gameOver) {
       if (currLevel > highScore) setHighScore(currLevel);
-      setCurrLevel(1)
+      setCurrLevel(1);
     } else {
       setCurrLevel(currLevel + 1);
     }
@@ -58,7 +58,10 @@ export const GameContainer = () => {
       <div className="game-screen">
         <div className="greetings-container">
           <h1>Simon Says</h1>
-          <div className="start-button u-orange-button" onClick={() => restartGame()}>
+          <div
+            className="start-button u-orange-button"
+            onClick={() => restartGame()}
+          >
             Restart!
           </div>
         </div>
