@@ -1,6 +1,7 @@
 import React, {useState, useRef} from 'react';
 import {Scores} from './Scores';
 import {Toy} from './Toy';
+import {notifyEasterEgg2} from '../util/easterEggs';
 
 export const GameContainer = () => {
   // state vars
@@ -80,6 +81,9 @@ export const GameContainer = () => {
         setGameOver={setGameOver}
       />
       <Scores currLevel={currLevel} highScore={highScore} />
+      <div onClick={notifyEasterEgg2} className="egg-emoji">
+        🥚
+      </div>
     </div>
   );
 };

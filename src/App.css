@@ -46,6 +46,12 @@
   cursor: pointer;
 }
 
+.egg-emoji {
+  position: absolute;
+  left: 0.2rem;
+  bottom: 0.2rem;
+}
+
 /* utilities START */
 .u-orange-button {
   background-color: lightsalmon;
