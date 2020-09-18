@@ -1,7 +1,7 @@
 import React, {useState, useRef} from 'react';
 import {Scores} from './Scores';
 import {Toy} from './Toy';
-import {notifyEasterEgg2} from '../util/easterEggs';
+import {notifyEasterEgg1, notifyEasterEgg2} from '../util/easterEggs';
 
 export const GameContainer = () => {
   // state vars
@@ -45,7 +45,9 @@ export const GameContainer = () => {
     return (
       <div className="game-screen">
         <div className="greetings-container">
-          <h1>Simon Says</h1>
+          <h1>
+            Sim<span onClick={notifyEasterEgg1}>o</span>n Says
+          </h1>
           <div className="start-button" onClick={() => startGame()}>
             Start!
           </div>
@@ -61,7 +63,9 @@ export const GameContainer = () => {
     return (
       <div className="game-screen">
         <div className="greetings-container">
-          <h1>Simon Says</h1>
+          <h1>
+            Sim<span onClick={notifyEasterEgg1}>o</span>n Says
+          </h1>
           <div
             className="start-button u-orange-button"
             onClick={() => restartGame()}
