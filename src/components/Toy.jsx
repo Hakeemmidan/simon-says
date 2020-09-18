@@ -1,6 +1,10 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
+import {notifyEasterEgg3} from '../util/easterEggNotifications';
 
 export const Toy = (props) => {
+  // state vars
+  const [centerAnimated, setCenterAnimated] = useState(false);
+
   // ref vars
   let forceStopAnimate = useRef(false);
   let targetColorIdx = useRef(0); // Increments on each correct click. Resets on new level.
@@ -13,7 +17,7 @@ export const Toy = (props) => {
 
   useEffect(() => {
     animateToy();
-  });
+  }, [animateToy]);
 
   const sleep = (ms) => {
     return new Promise((resolve) => setTimeout(resolve, ms));
@@ -123,32 +127,32 @@ export const Toy = (props) => {
         </clipPath>
         <path
           id="Y"
-          onClick={(e) => handleColorClick(e)}
           className="toy-btn"
+          onClick={(e) => handleColorClick(e)}
           clipPath="url(#prefix__d)"
           fill="#DFC323"
           d="M3.246 100.666h97.419v92.676H3.246z"
         />
         <path
           id="B"
-          onClick={(e) => handleColorClick(e)}
           className="toy-btn"
+          onClick={(e) => handleColorClick(e)}
           clipPath="url(#prefix__d)"
           fill="#283676"
           d="M100.667 100.666h97.419v92.676h-97.419z"
         />
         <path
           id="G"
-          onClick={(e) => handleColorClick(e)}
           className="toy-btn"
+          onClick={(e) => handleColorClick(e)}
           clipPath="url(#prefix__d)"
           fill="#00783E"
           d="M100.667 7.99h97.419v92.676h-97.419z"
         />
         <path
           id="R"
-          onClick={(e) => handleColorClick(e)}
           className="toy-btn"
+          onClick={(e) => handleColorClick(e)}
           clipPath="url(#prefix__d)"
           fill="#C92127"
           d="M3.246 7.99h97.419v92.676H3.246z"
@@ -156,8 +160,23 @@ export const Toy = (props) => {
       </g>
       <path d="M97.167 6.041h7v189h-7z" />
       <path d="M6.167 97.166h189v7h-189z" />
-      <circle cx={100.666} cy={100.666} r={33.333} />
-      <circle fill="#4C4C4D" cx={100.666} cy={100.666} r={28.07} />
+      <circle
+        className={centerAnimated ? 'animated-toy-center-ring' : ''}
+        cx={100.666}
+        cy={100.666}
+        r={33.333}
+      />
+      <circle
+        className={centerAnimated ? 'animated-toy-center' : ''}
+        onClick={() => {
+          notifyEasterEgg3();
+          setCenterAnimated(!centerAnimated);
+        }}
+        fill="#4C4C4D"
+        cx={100.666}
+        cy={100.666}
+        r={28.07}
+      />
     </svg>
   );
 };

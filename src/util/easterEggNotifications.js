@@ -29,3 +29,15 @@ export const notifyEasterEgg2 = () => {
     autoClose: 3000,
   });
 };
+
+export const notifyEasterEgg3 = () => {
+  easterEggFound.egg3 = true;
+
+  toast.success('You found egg #3!', {
+    onClose: () =>
+      !easterEggFound.egg1
+        ? toast.dark('Ask Simon for #1, maybe he knows 😏')
+        : null,
+    autoClose: 3000,
+  });
+};

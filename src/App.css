@@ -52,6 +52,14 @@
   bottom: 0.2rem;
 }
 
+.animated-toy-center {
+  animation: colorfulFill 8s ease, svgRExpand 8s ease;
+}
+
+.animated-toy-center-ring {
+  animation: svgRExpandPlus 8s ease;
+}
+
 /* utilities START */
 .u-orange-button {
   background-color: lightsalmon;
@@ -68,6 +76,63 @@
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes colorfulFill {
+  0% {
+    fill: rgb(237, 28, 36);
+  }
+  20% {
+    fill: rgb(255, 222, 23);
+  }
+  40% {
+    fill: rgb(33, 64, 154);
+  }
+  60% {
+    fill: rgb(0, 161, 75);
+  }
+  80% {
+    fill: rgb(76, 76, 77);
+  }
+  100% {
+    fill: rgb(76, 76, 77);
+  }
+}
+
+@keyframes svgRExpand {
+  20% {
+    r: 0rem;
+  }
+  40% {
+    r: 2rem;
+  }
+  60% {
+    r: 4rem;
+  }
+  80% {
+    r: 6rem;
+  }
+  100% {
+    r: none;
+  }
+}
+
+@keyframes svgRExpandPlus {
+  20% {
+    r: 0.3rem;
+  }
+  40% {
+    r: 2.3rem;
+  }
+  60% {
+    r: 4.3rem;
+  }
+  80% {
+    r: 6.3rem;
+  }
+  100% {
+    r: none;
   }
 }
 
