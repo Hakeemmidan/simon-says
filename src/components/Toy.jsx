@@ -17,7 +17,7 @@ export const Toy = (props) => {
 
   useEffect(() => {
     animateToy();
-  }, [animateToy]);
+  }, [animateToy, gameColors]);
 
   const sleep = (ms) => {
     return new Promise((resolve) => setTimeout(resolve, ms));
