@@ -14,6 +14,7 @@ export const notifyEasterEgg1 = () => {
       !easterEggFound.egg2
         ? toast.dark("Let's see if you can find 🥚 #2")
         : null,
+    autoClose: 3000,
   });
 };
 
@@ -25,5 +26,6 @@ export const notifyEasterEgg2 = () => {
       !easterEggFound.egg1
         ? toast.dark('Ask Simon for #1, maybe he knows 😏')
         : null,
+    autoClose: 3000,
   });
 };

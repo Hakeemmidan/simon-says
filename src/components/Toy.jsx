@@ -1,9 +1,14 @@
 import React, {useEffect, useRef} from 'react';
 
 export const Toy = (props) => {
+  // ref vars
   let forceStopAnimate = useRef(false);
   let targetColorIdx = useRef(0); // Increments on each correct click. Resets on new level.
+
+  // props
   let gameColors = props.gameColors.current;
+
+  // constants
   const [YELLOW, BLUE, GREEN, RED] = ['Y', 'B', 'G', 'R'];
 
   useEffect(() => {
