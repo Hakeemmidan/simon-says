@@ -1,7 +1,10 @@
 import React, {useState, useRef} from 'react';
 import {Scores} from './Scores';
 import {Toy} from './Toy';
-import {notifyEasterEgg1, notifyEasterEgg2} from '../util/easterEggs';
+import {
+  notifyEasterEgg1,
+  notifyEasterEgg2,
+} from '../util/easterEggNotifications';
 
 export const GameContainer = () => {
   // state vars
