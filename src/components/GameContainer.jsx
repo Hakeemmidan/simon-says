@@ -54,9 +54,6 @@ export const GameContainer = () => {
           <div className="start-button" onClick={() => startGame()}>
             Start!
           </div>
-          <h4 className="u-color-lightgray">
-            [There are 3 easter eggs in this game, see if you can find them]
-          </h4>
         </div>
       </div>
     );

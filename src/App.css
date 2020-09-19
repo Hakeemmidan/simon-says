@@ -65,11 +65,9 @@
   background-color: lightsalmon;
   color: orangered;
 }
-.u-color-lightgray {
-  color: lightgray;
-}
 /* utilities END */
 
+/* animations START */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -135,7 +133,9 @@
     r: none;
   }
 }
+/* animations END */
 
+/* media queries START */
 @media only screen and (max-width: 500px) {
   .GameContainer {
     flex-direction: column-reverse;
@@ -146,3 +146,4 @@
     margin: 0 0 3rem 0;
   }
 }
+/* media queries END */
