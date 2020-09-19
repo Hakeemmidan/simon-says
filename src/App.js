@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 function App() {
   return (
     <div>
-      <ToastContainer transition={Slide} />
+      <ToastContainer position="top-center" transition={Slide} />
       <GameContainer />
     </div>
   );

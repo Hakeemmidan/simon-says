@@ -17,7 +17,7 @@ export const Toy = (props) => {
 
   useEffect(() => {
     animateToy();
-  }, [animateToy, gameColors]);
+  });
 
   const sleep = (ms) => {
     return new Promise((resolve) => setTimeout(resolve, ms));
@@ -170,7 +170,7 @@ export const Toy = (props) => {
         className={centerAnimated ? 'animated-toy-center' : ''}
         onClick={() => {
           notifyEasterEgg3();
-          setCenterAnimated(!centerAnimated);
+          setCenterAnimated(true);
         }}
         fill="#4C4C4D"
         cx={100.666}
