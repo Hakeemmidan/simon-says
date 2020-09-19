@@ -6,38 +6,46 @@ let easterEggFound = {
   egg3: false,
 };
 
-export const notifyEasterEgg1 = () => {
-  easterEggFound.egg1 = true;
+let numEggToBeFound = 0;
 
-  toast.success('You found egg #1!', {
-    onClose: () =>
-      !easterEggFound.egg2
-        ? toast.dark("Let's see if you can find 🥚 #2")
-        : null,
-    autoClose: 3000,
-  });
+export const notifyEasterEgg1 = () => {
+  if (!easterEggFound.egg1) {
+    easterEggFound.egg1 = true;
+    numEggToBeFound++;
+
+    toast.success(`${numEggToBeFound}/3 eggs found!`, {
+      onClose: () =>
+        !easterEggFound.egg2
+          ? toast.dark("Let's see if you can find 🥚 #2")
+          : null,
+    });
+  }
 };
 
 export const notifyEasterEgg2 = () => {
-  easterEggFound.egg2 = true;
+  if (!easterEggFound.egg2) {
+    easterEggFound.egg2 = true;
+    numEggToBeFound++;
 
-  toast.success('You found egg #2!', {
-    onClose: () =>
-      !easterEggFound.egg1
-        ? toast.dark('Ask Simon for #1, maybe he knows 😏')
-        : null,
-    autoClose: 3000,
-  });
+    toast.success(`${numEggToBeFound}/3 eggs found!`, {
+      onClose: () =>
+        !easterEggFound.egg1
+          ? toast.dark('Ask Simon for #1, maybe he knows 😏')
+          : null,
+    });
+  }
 };
 
 export const notifyEasterEgg3 = () => {
-  easterEggFound.egg3 = true;
+  if (!easterEggFound.egg3) {
+    easterEggFound.egg3 = true;
+    numEggToBeFound++;
 
-  toast.success('You found egg #3!', {
-    onClose: () =>
-      !easterEggFound.egg1
-        ? toast.dark('Ask Simon for #1, maybe he knows 😏')
-        : null,
-    autoClose: 3000,
-  });
+    toast.success(`${numEggToBeFound}/3 eggs found!`, {
+      onClose: () =>
+        !easterEggFound.egg1
+          ? toast.dark('Ask Simon for #1, maybe he knows 😏')
+          : null,
+    });
+  }
 };
