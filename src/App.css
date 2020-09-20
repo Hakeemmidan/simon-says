@@ -71,6 +71,11 @@
   background-color: lightsalmon;
   color: orangered;
 }
+
+.u-disable-click-events * {
+  /* disable all mouse events on subElements */
+  pointer-events: none;
+}
 /* utilities END */
 
 /* animations START */

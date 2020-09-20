@@ -21,6 +21,10 @@ export const Toy = (props) => {
   };
 
   const animateToy = async () => {
+    // disable clicking toy while animating
+    document.getElementById('toy').classList.add('u-disable-click-events');
+    document.getElementsByTagName('html')[0].style.cursor = 'not-allowed';
+
     await sleep(400);
 
     var animateGameColors = async (i) => {
@@ -30,6 +34,13 @@ export const Toy = (props) => {
       }
 
       await sleep(500);
+
+      if (gameColors[i] === gameColors[gameColors.length - 1]) {
+        document
+          .getElementById('toy')
+          .classList.remove('u-disable-click-events');
+        document.getElementsByTagName('html')[0].style.cursor = null;
+      }
 
       if (forceStopAnimate.current) return;
       if (gameColors[i]) resetColor(gameColors[i]);
@@ -83,7 +94,7 @@ export const Toy = (props) => {
   };
 
   return (
-    <svg width={201.333} height={201.332} {...props}>
+    <svg id="toy" width={201.333} height={201.332} {...props}>
       <path
         fill="#2B2B2B"
         d="M201.333 100.666c0 55.597-45.072 100.666-100.665 100.666C45.071 201.332 0 156.263 0 100.666S45.071 0 100.668 0c55.592 0 100.665 45.069 100.665 100.666z"
