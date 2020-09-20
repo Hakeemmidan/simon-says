@@ -1,10 +1,7 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {notifyEasterEgg3} from '../util/easterEggNotifications';
+import React, {useEffect, useRef} from 'react';
+import {ToyCenter} from './ToyCenter';
 
 export const Toy = (props) => {
-  // state vars
-  const [centerAnimated, setCenterAnimated] = useState(false);
-
   // ref vars
   let forceStopAnimate = useRef(false);
   let targetColorIdx = useRef(0); // Increments on each correct click. Resets on new level.
@@ -160,23 +157,7 @@ export const Toy = (props) => {
       </g>
       <path d="M97.167 6.041h7v189h-7z" />
       <path d="M6.167 97.166h189v7h-189z" />
-      <circle
-        className={centerAnimated ? 'animated-toy-center-ring' : ''}
-        cx={100.666}
-        cy={100.666}
-        r={33.333}
-      />
-      <circle
-        className={centerAnimated ? 'animated-toy-center' : ''}
-        onClick={() => {
-          notifyEasterEgg3();
-          setCenterAnimated(true);
-        }}
-        fill="#4C4C4D"
-        cx={100.666}
-        cy={100.666}
-        r={28.07}
-      />
+      <ToyCenter />
     </svg>
   );
 };
