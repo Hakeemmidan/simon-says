@@ -52,6 +52,12 @@
   bottom: 0.2rem;
 }
 
+#sound {
+  position: absolute;
+  bottom: 0.2rem;
+  right: 0.2rem;
+}
+
 .animated-toy-center {
   animation: colorfulFill 8s ease, svgRExpand 8s ease;
 }
