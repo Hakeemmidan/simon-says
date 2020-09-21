@@ -2,17 +2,20 @@ import React from 'react';
 import {ToastContainer, Slide, toast} from 'react-toastify';
 import {GameContainer} from './components/GameContainer';
 import {ConfettiContextProvider} from './components/ConfettiContext';
+import {getCookie} from './util/cookies';
 
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
-  toast.info(
-    'This site uses a cookie to store the high score. By using website you agree for cookie use 🍪',
-    {
-      autoClose: false,
-    }
-  );
+  if (!getCookie('simonSaysHighScore')) {
+    toast.info(
+      'This site uses a cookie to store the high score. By using website you agree for cookie use 🍪',
+      {
+        autoClose: false,
+      }
+    );
+  }
 
   return (
     <>
