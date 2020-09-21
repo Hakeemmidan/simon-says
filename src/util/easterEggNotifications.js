@@ -38,7 +38,7 @@ export const notifyEasterEgg1 = () => {
     easterEggFound.egg1 = true;
     numEggsFound++;
 
-    if (numEggsFound === TOTAL_EGGS_COUNT) {
+    if (allEasterEggsFound()) {
       celeberate();
       return;
     }
@@ -55,7 +55,7 @@ export const notifyEasterEgg2 = () => {
     easterEggFound.egg2 = true;
     numEggsFound++;
 
-    if (numEggsFound === TOTAL_EGGS_COUNT) {
+    if (allEasterEggsFound()) {
       celeberate();
       return;
     }
@@ -72,7 +72,7 @@ export const notifyEasterEgg3 = () => {
     easterEggFound.egg3 = true;
     numEggsFound++;
 
-    if (numEggsFound === TOTAL_EGGS_COUNT) {
+    if (allEasterEggsFound()) {
       celeberate();
       return;
     }
@@ -82,6 +82,10 @@ export const notifyEasterEgg3 = () => {
       autoClose: 3000,
     });
   }
+};
+
+export const allEasterEggsFound = () => {
+  return numEggsFound === TOTAL_EGGS_COUNT;
 };
 
 const celeberate = () => {

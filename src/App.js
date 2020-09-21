@@ -1,6 +1,8 @@
 import React from 'react';
 import {ToastContainer, Slide, toast} from 'react-toastify';
 import {GameContainer} from './components/GameContainer';
+import {ConfettiContextProvider} from './components/ConfettiContext';
+
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -11,8 +13,9 @@ function App() {
       autoClose: false,
     }
   );
+
   return (
-    <div>
+    <>
       {/* used to play celebration sound */}
       <iframe
         id="sound"
@@ -24,8 +27,10 @@ function App() {
         src=""
       ></iframe>
       <ToastContainer position="top-center" transition={Slide} />
-      <GameContainer />
-    </div>
+      <ConfettiContextProvider>
+        <GameContainer />
+      </ConfettiContextProvider>
+    </>
   );
 }
 

@@ -1,9 +1,11 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useContext} from 'react';
 import {Scores} from './Scores';
 import {Toy} from './Toy';
+import {ConfettiContext} from './ConfettiContext';
 import {
   notifyEasterEgg1,
   notifyEasterEgg2,
+  allEasterEggsFound,
 } from '../util/easterEggNotifications';
 import {getCookie, setCookie} from '../util/cookies';
 
@@ -26,6 +28,9 @@ export const GameContainer = () => {
   // constants
   const COLORS_ARR = ['R', 'G', 'B', 'Y'];
 
+  // context
+  let confettiCtx = useContext(ConfettiContext);
+
   const incrementLevel = () => {
     // add random color to gameColors
     gameColors.current.push(
@@ -47,6 +52,8 @@ export const GameContainer = () => {
     setGameOver(false);
   };
 
+  if (allEasterEggsFound()) confettiCtx.setRunConfetti(true);
+
   if (!gameStarted) {
     return (
       <div className="game-screen">
@@ -54,7 +61,7 @@ export const GameContainer = () => {
           <h1>
             Sim<span onClick={notifyEasterEgg1}>o</span>n Says
           </h1>
-          <div className="start-button" onClick={() => startGame()}>
+          <div className="start-button" onClick={startGame}>
             Start!
           </div>
         </div>
@@ -75,10 +82,7 @@ export const GameContainer = () => {
           <h1>
             Sim<span onClick={notifyEasterEgg1}>o</span>n Says
           </h1>
-          <div
-            className="start-button u-orange-button"
-            onClick={() => restartGame()}
-          >
+          <div className="start-button u-orange-button" onClick={restartGame}>
             Restart!
           </div>
 
