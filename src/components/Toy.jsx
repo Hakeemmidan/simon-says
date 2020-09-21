@@ -22,8 +22,9 @@ export const Toy = (props) => {
 
   const animateToy = async () => {
     // disable clicking toy while animating
-    document.getElementById('toy').classList.add('u-disable-click-events');
-    document.getElementsByTagName('html')[0].style.cursor = 'not-allowed';
+    let rootHtmlTag = document.getElementsByTagName('html')[0];
+    rootHtmlTag.classList.add('u-disable-click-events');
+    rootHtmlTag.style.cursor = 'not-allowed';
 
     await sleep(400);
 
@@ -35,11 +36,10 @@ export const Toy = (props) => {
 
       await sleep(500);
 
-      if (gameColors[i] === gameColors[gameColors.length - 1]) {
-        document
-          .getElementById('toy')
-          .classList.remove('u-disable-click-events');
-        document.getElementsByTagName('html')[0].style.cursor = null;
+      if (i === gameColors.length - 1) {
+        // enable clicking on last elemnent
+        rootHtmlTag.classList.remove('u-disable-click-events');
+        rootHtmlTag.style.cursor = null;
       }
 
       if (forceStopAnimate.current) return;

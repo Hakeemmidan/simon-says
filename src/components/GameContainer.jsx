@@ -1,4 +1,5 @@
 import React, {useState, useRef} from 'react';
+import {toast} from 'react-toastify';
 import {Scores} from './Scores';
 import {Toy} from './Toy';
 import {
@@ -15,6 +16,7 @@ export const GameContainer = () => {
 
   // ref vars
   let gameColors = useRef([]); // game's randomly generated colors
+  let reachedHighScore = useRef(false);
 
   // constants
   const COLORS_ARR = ['R', 'G', 'B', 'Y'];
@@ -25,12 +27,7 @@ export const GameContainer = () => {
       COLORS_ARR[Math.floor(Math.random() * COLORS_ARR.length)]
     );
 
-    if (gameOver) {
-      if (currLevel > highScore) setHighScore(currLevel);
-      setCurrLevel(1);
-    } else {
-      setCurrLevel(currLevel + 1);
-    }
+    gameOver ? setCurrLevel(1) : setCurrLevel(currLevel + 1);
   };
 
   const startGame = () => {
@@ -39,6 +36,7 @@ export const GameContainer = () => {
   };
 
   const restartGame = () => {
+    reachedHighScore.current = false;
     gameColors.current = [];
     incrementLevel();
     setGameOver(false);
@@ -60,6 +58,11 @@ export const GameContainer = () => {
   }
 
   if (gameOver) {
+    if (currLevel > highScore) {
+      setHighScore(currLevel);
+      reachedHighScore.current = true;
+    }
+
     return (
       <div className="game-screen">
         <div className="greetings-container">
@@ -72,6 +75,15 @@ export const GameContainer = () => {
           >
             Restart!
           </div>
+
+          {reachedHighScore.current ? (
+            <h1>New high score! ({highScore}) 🥳</h1>
+          ) : (
+            <>
+              <h4>Level reached: {currLevel}</h4>
+              <h4>High Score: {highScore}</h4>
+            </>
+          )}
         </div>
       </div>
     );
