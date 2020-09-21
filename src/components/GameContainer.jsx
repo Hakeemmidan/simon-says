@@ -1,5 +1,4 @@
 import React, {useState, useRef} from 'react';
-import {toast} from 'react-toastify';
 import {Scores} from './Scores';
 import {Toy} from './Toy';
 import {
