@@ -5,13 +5,19 @@ import {
   notifyEasterEgg1,
   notifyEasterEgg2,
 } from '../util/easterEggNotifications';
+import {getCookie, setCookie} from '../util/cookies';
 
 export const GameContainer = () => {
+  // variables
+  let highScoreCookie = getCookie('simonSaysHighScore');
+
   // state vars
   const [gameStarted, setGameStarted] = useState(false);
   const [gameOver, setGameOver] = useState(false);
   const [currLevel, setCurrLevel] = useState(0);
-  const [highScore, setHighScore] = useState(0);
+  const [highScore, setHighScore] = useState(
+    highScoreCookie ? highScoreCookie : 0
+  );
 
   // ref vars
   let gameColors = useRef([]); // game's randomly generated colors
@@ -60,6 +66,7 @@ export const GameContainer = () => {
     if (currLevel > highScore) {
       setHighScore(currLevel);
       reachedHighScore.current = true;
+      setCookie('simonSaysHighScore', currLevel, 30);
     }
 
     return (
