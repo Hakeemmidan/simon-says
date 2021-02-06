@@ -19,8 +19,8 @@ function App() {
 
   return (
     <>
-      {/* used to play celebration sound */}
       <iframe
+        title="soundCloud-placeholder-for-celeberation-music"
         id="sound"
         width="0"
         height="0"
