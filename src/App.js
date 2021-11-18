@@ -25,7 +25,7 @@ function App() {
         width="0"
         height="0"
         scrolling="no"
-        frameborder="no"
+        frameBorder="no"
         allow="autoplay"
         src=""
       ></iframe>
