@@ -22,14 +22,16 @@ const giveHint = () => {
   }
 };
 const egg1Hint = () =>
-  toast.dark('Ask Simon for #1, maybe he knows 😏', {toastId: 'egg-1-toast'});
+  toast.dark('Ask Simon for #1, maybe he knows 😏', {
+    toastId: 'egg-1-hint-toast',
+  });
 const egg2Hint = () =>
   toast.dark("Let's see if you can find 🥚 #2 MUHAHAHA", {
-    toastId: 'egg-2-toast',
+    toastId: 'egg-2-hint-toast',
   });
 const egg3Hint = () =>
   toast.dark("You're really on TARGET, but I wonder if you can find egg #3", {
-    toastId: 'egg-3-toast',
+    toastId: 'egg-3-hint-toast',
   });
 
 // egg found notifications
